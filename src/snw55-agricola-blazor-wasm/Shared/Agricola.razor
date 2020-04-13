@@ -1,24 +1,29 @@
 ﻿<div class="container-fluid">
     <div class="row">
-        <div class="col-md bg-primary p-0">
+        <div class="col-md bg-primary">
             <Game />
         </div>
-        <div class="col-md bg-primary p-0">
+        <div class="col-md bg-primary">
             <Farm />
             <GreaterInvestments />
         </div>
-        <div class="col-md bg-primary p-0">
+        <div class="col-md bg-primary">
             <Crafts />
             <LesserInvestments />
         </div>
-        <div class="col-sm bg-primary p-0">
+        <div class="col-sm bg-primary">
             <Events />
         </div>
     </div>
+    <div class="row">
+        <div class="col-md bg-warning">
+            <Opponent />
+        </div>
+        <div class="col-md bg-warning">
+            <Opponent />
+        </div>
+        <div class="col-md bg-warning">
+            <Opponent />
+        </div>
+    </div>
 </div>
-
-@code {
-    // Demonstrates how a parent component can supply parameters
-    [Parameter]
-    public string Title { get; set; }
-}

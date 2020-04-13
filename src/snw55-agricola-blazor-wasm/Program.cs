@@ -1,9 +1,7 @@
-using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Text;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Components.Authorization;
 
 namespace snw55_agricola_blazor_wasm
 {
@@ -14,7 +12,12 @@ namespace snw55_agricola_blazor_wasm
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
 
-            builder.Services.AddBaseAddressHttpClient();
+            builder.Services
+                .AddBaseAddressHttpClient()
+                .AddOptions()
+                .AddAuthorizationCore();
+
+            builder.Services.AddScoped<AuthenticationStateProvider, DummyAuthStateProvider>();
 
             await builder.Build().RunAsync();
         }
