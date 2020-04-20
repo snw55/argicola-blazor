@@ -1,6 +1,4 @@
-﻿@inject Blazor.Auth0.IAuthenticationService authService
-
-<div class="top-row pl-4 navbar navbar-dark">
+﻿<div class="top-row pl-4 navbar navbar-dark">
     <a class="navbar-brand" href="">JN</a>
     <button class="navbar-toggler" @onclick="ToggleNavMenu">
         <span class="navbar-toggler-icon"></span>
@@ -15,12 +13,12 @@
             </NavLink>
             <AuthorizeView>
                 <Authorized>
-                    <NavLink class="nav-link" href="" @onclick="authService.LogOut">
+                    <NavLink class="nav-link" href="" @onclick="@(async () => await AuthenticationService.LogOut())">
                         <span class="oi oi-account-logout" aria-hidden="true"></span> Logout
                     </NavLink>
                 </Authorized>
                 <NotAuthorized>
-                    <NavLink class="nav-link" href="" @onclick="authService.Authorize">
+                    <NavLink class="nav-link" href="" @onclick="AuthenticationService.Authorize">
                         <span class="oi oi-account-login" aria-hidden="true"></span> Login
                     </NavLink>
                 </NotAuthorized>
@@ -30,6 +28,8 @@
 </div>
 
 @code {
+    [Inject]
+    private Blazor.Auth0.IAuthenticationService AuthenticationService { get; set; }
     private bool collapseNavMenu = true;
 
     private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;

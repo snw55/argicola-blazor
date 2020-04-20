@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Components.Authorization;
 using Blazor.Auth0;
+using Blazor.Extensions.Storage;
 
 namespace snw55_agricola_blazor_wasm
 {
@@ -22,7 +22,8 @@ namespace snw55_agricola_blazor_wasm
                     options.ClientId = "5DUd6KS3qMsRmRRvZpKQRm9fG2T6iARS";
                     options.RequireAuthenticatedUser = false;
                 })
-                .AddAuthorizationCore();
+                .AddAuthorizationCore()
+                .AddStorage();
 
             await builder.Build().RunAsync();
         }
